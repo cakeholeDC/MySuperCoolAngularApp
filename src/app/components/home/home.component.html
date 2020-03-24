@@ -1,7 +1,13 @@
-<h1 [style.font-family]="clickCounter > 4 ? 'fantasy' : 'Arial, Helvetica, Sans Serif'">Welcome!</h1>
+<h1 [style.font-family]="clickCounter > 7 ? 'Impact, Charcoal,sans-serif' : 'Arial, Helvetica, Sans Serif'">Welcome!</h1>
 
 <div class="play-container">
 	<p>You've clicked <button (click)="countClick()">This Button</button> {{ clickCounter }} times.</p>
+	<ng-template [ngIf]="clickCounter >= 25">
+		<p>Keep Clicking, you might win somthing!</p>
+	</ng-template>
+	<ng-template [ngIf]="clickCounter >= 100">
+		<h1>Wow, <strong>only</strong> 100 clicks?</h1>
+	</ng-template>
 </div>
 
 <div class='play-container'>
@@ -10,13 +16,7 @@
 </div>
 
 <!-- <div class='play-container' [style.background-color]="clickCounter > 4 ? 'yellow' : 'lightgray'"> -->
-<div 
-	class='play-container' 
-	[ngStyle]="{
-		'background-color' : clickCounter > 4 ? 'yellow' : 'lightgray',
-		'border': clickCounter > 4 ? '4px solid black' : none
-	}"
->
+<div class='play-container' [ngClass]="setClasses()">
 	<ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
 		<p>The Click Counter <strong>is greater</strong> than 4.</p>
 	</ng-template>

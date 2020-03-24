@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../services/http.service'
 
 @Component({
   selector: 'app-breweries',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./breweries.component.scss']
 })
 export class BreweriesComponent implements OnInit {
+	state:string = 'district of columbia'
+	showing:string = ''
+	brews: Object;
 
-  constructor() { }
+  constructor(private _http:HttpService) { }
 
   ngOnInit(): void {
+  	this._http.fetchBreweries(this.state).subscribe(data => {
+  		this.brews = data
+  		console.log(this.brews)
+  	})
+  	this.showing = this.state
+  }
+
+  submitStateSearch(){
+  	this._http.fetchBreweries(this.state).subscribe(data => {
+  		this.brews = data
+  	})
+  	this.showing = this.state
   }
 
 }
