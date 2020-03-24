@@ -1,0 +1,27 @@
+<h1 [style.font-family]="clickCounter > 4 ? 'fantasy' : 'Arial, Helvetica, Sans Serif'">Welcome!</h1>
+
+<div class="play-container">
+	<p>You've clicked <button (click)="countClick()">This Button</button> {{ clickCounter }} times.</p>
+</div>
+
+<div class='play-container'>
+	<input type="text" [(ngModel)]="name">
+	<p>You Typed: {{ name }}</p>
+</div>
+
+<!-- <div class='play-container' [style.background-color]="clickCounter > 4 ? 'yellow' : 'lightgray'"> -->
+<div 
+	class='play-container' 
+	[ngStyle]="{
+		'background-color' : clickCounter > 4 ? 'yellow' : 'lightgray',
+		'border': clickCounter > 4 ? '4px solid black' : none
+	}"
+>
+	<ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
+		<p>The Click Counter <strong>is greater</strong> than 4.</p>
+	</ng-template>
+
+	<ng-template #none>
+		<p>The Click Counter <strong>is less</strong> than 4.</p>
+	</ng-template>
+</div>
