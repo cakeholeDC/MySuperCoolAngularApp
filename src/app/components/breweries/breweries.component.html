@@ -60,7 +60,7 @@
 
 <ul *ngIf="brews">
 	<li *ngFor="let brew of brews">
-		<p class="brewType">{{brew.brewery_type}}</p>
+		<p class="brewType">{{ brew.brewery_type }}</p>
 		<p class="name"><a href="{{ brew.website_url }}" class="site">{{ brew.name }}</a></p>
 		<p class="address">{{ brew.street }}</p>
 		<p class="address">{{ brew.city +' '+ brew.state.replace("District of Columbia", "DC") +', '+ brew.postal_code.slice(0,5) }}</p>

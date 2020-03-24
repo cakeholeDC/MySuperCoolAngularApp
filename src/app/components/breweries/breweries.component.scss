@@ -1,3 +1,5 @@
+$primary: rgb(226, 124, 62);
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -47,5 +49,10 @@ ul {
     
     .state-select-label {
         display: inline;
+    }
+
+    select.state-select {
+        background-color: #fff;
+        font-size: 1em;
     }
 }
