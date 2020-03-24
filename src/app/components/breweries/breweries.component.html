@@ -1,8 +1,8 @@
-<h1>Breweries in {{ showing | titlecase }}</h1>
+<h1>Breweries in {{ showing }}</h1>
 
 <div class='filter-container' >
-	<h3 class="state-select-label">Change State: </h3>
-	<select class="state-select" [(ngModel)]="state" (change)='submitStateSearch()' value="state">
+	<h3 class="state-select-label">Select A State: </h3>
+	<select class="state-select" [(ngModel)]="state" (change)='submitStateSearch()' >
 		<option value="District of Columbia">District of Columbia</option>
 		<option value="Alabama">Alabama</option>
 		<option value="Alaska">Alaska</option>
@@ -60,12 +60,12 @@
 
 <ul *ngIf="brews">
 	<li *ngFor="let brew of brews">
-		<p class="name">{{ brew.name }}</p>
-		<br/>
+		<p class="brewType">{{brew.brewery_type}}</p>
+		<p class="name"><a href="{{ brew.website_url }}" class="site">{{ brew.name }}</a></p>
 		<p class="address">{{ brew.street }}</p>
 		<p class="address">{{ brew.city +' '+ brew.state.replace("District of Columbia", "DC") +', '+ brew.postal_code.slice(0,5) }}</p>
 		<!-- <p class="country">{{ brew.country }}</p> -->
-		<br/>
-		<a href="{{ brew.website_url }}" class="site">Site</a>
+		<!-- <br/> -->
+		<!-- <a href="{{ brew.website_url }}" class="site">Website</a> -->
 	</li>
 </ul>

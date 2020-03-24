@@ -7,7 +7,7 @@ import { HttpService } from '../../services/http.service'
   styleUrls: ['./breweries.component.scss']
 })
 export class BreweriesComponent implements OnInit {
-	state:string = 'district of columbia'
+	state:string = 'District of Columbia'
 	showing:string = ''
 	brews: Object;
 
